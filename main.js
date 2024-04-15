@@ -5,11 +5,15 @@ const EdwardCoin = new Blockchain()
 EdwardCoin.createTransaction(new Transaction('Alice', 'Bob', 50))
 EdwardCoin.createTransaction(new Transaction('Bob', 'Charlie', 25))
 
-console.log('\n Starting the miner...')
+console.log('miner Starting the miner...')
 EdwardCoin.minePendingTransactions('miner')
 
 console.log('miner balance: ', EdwardCoin.getBalanceOfAddress('miner'))
 console.log('Bob balance: ', EdwardCoin.getBalanceOfAddress('Bob'))
+
+console.log('\n another miner Starting the miner...')
+EdwardCoin.minePendingTransactions('another miner')
+console.log('miner balance: ', EdwardCoin.getBalanceOfAddress('miner'))
 
 // console.log('Mining a new block...')
 // EdwardCoin.addBlock(

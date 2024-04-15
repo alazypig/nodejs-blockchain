@@ -21,16 +21,13 @@ class Blockchain {
     const block = new Block(new Date().getTime(), this.pendingTransactions)
     block.mineBlock(this.difficulty)
 
-    console.log('Block mined: ', block.hash)
-
     this.chain.push(block)
 
     // 发放收益
-    this.pendingTransactions.push(new Transaction(null, minerRewardAddress, this.miningReward))
-
-    // this.pendingTransactions = [
-    //   new Transaction(null, minerRewardAddress, this.miningReward),
-    // ]
+    // the mining reward will only be sent when the next block is mined, not when a new transaction is added
+    this.pendingTransactions = [
+      new Transaction(null, minerRewardAddress, this.miningReward),
+    ]
   }
 
   createTransaction(transaction) {
