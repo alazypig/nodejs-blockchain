@@ -1,5 +1,6 @@
-const SHA256 = require('crypto-js/sha256')
-const EC = require('elliptic').ec
+import SHA256 from 'crypto-js/sha256'
+import { ec as EC } from 'elliptic'
+
 const ec = new EC('secp256k1')
 
 class Transaction {
@@ -7,6 +8,7 @@ class Transaction {
     this.fromAddress = fromAddress
     this.toAddress = toAddress
     this.amount = amount
+    this.hash = this.calculateHash()
   }
 
   calculateHash() {
@@ -39,4 +41,4 @@ class Transaction {
   }
 }
 
-module.exports = Transaction
+export default Transaction

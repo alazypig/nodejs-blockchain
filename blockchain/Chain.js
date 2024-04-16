@@ -1,5 +1,5 @@
-const Block = require('./Block')
-const Transaction = require('./Transaction')
+import Block from './Block.js'
+import Transaction from './Transaction.js'
 
 class Blockchain {
   constructor() {
@@ -18,7 +18,11 @@ class Blockchain {
   }
 
   minePendingTransactions(minerRewardAddress) {
-    const block = new Block(new Date().getTime(), this.pendingTransactions)
+    const block = new Block(
+      new Date().getTime(),
+      this.pendingTransactions,
+      this.getLatestBlock().hash,
+    )
     block.mineBlock(this.difficulty)
 
     this.chain.push(block)
@@ -28,6 +32,8 @@ class Blockchain {
     this.pendingTransactions = [
       new Transaction(null, minerRewardAddress, this.miningReward),
     ]
+
+    return block
   }
 
   addTransaction(transaction) {
@@ -84,4 +90,4 @@ class Blockchain {
   }
 }
 
-module.exports = Blockchain
+export default Blockchain

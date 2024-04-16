@@ -1,0 +1,4 @@
+.ant-list-items {
+    display: flex  !important;
+    overflow-x: scroll !important;
+}
