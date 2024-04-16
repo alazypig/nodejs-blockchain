@@ -1,3 +1,12 @@
+### How to use 
+
+```bash
+#current node version 20.12.1
+npm install
+npm run dev
+# run the server on http://localhost:3000
+```
+
 ### 矿工POW流程
 
 链上有两笔Pending的交易，需要打包进区块。
